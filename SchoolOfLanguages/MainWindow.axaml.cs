@@ -12,7 +12,6 @@ namespace SchoolOfLanguages
 {
     public partial class MainWindow : Window
     {
-        List<Client> ClientsCruzer = Helper.DataBase.Clients.Include(x => x.VisitLists).Include(x => x.ListTags).ToList();
         public MainWindow()
         {
             InitializeComponent();
@@ -20,6 +19,8 @@ namespace SchoolOfLanguages
         }
         private void sill()
         {
+            List<Client> ClientsCruzer = Helper.DataBase.Clients.Include(x => x.VisitLists).Include(x => x.ListTags).ToList();
+            
             if (SearchTextBox == null) return;
             if (!string.IsNullOrEmpty(SearchTextBox.Text))
             {
@@ -37,10 +38,10 @@ namespace SchoolOfLanguages
                     ClientsCruzer = ClientsCruzer.ToList();
                     break;
                 case 1:
-                    ClientsCruzer = ClientsCruzer.Where(x => x.gender == "Муж.").ToList();
+                    ClientsCruzer = ClientsCruzer.Where(x => x.gender == "ГЊГіГ¦.").ToList();
                     break;
                 case 2:
-                    ClientsCruzer = ClientsCruzer.Where(x => x.gender == "Жен.").ToList();
+                    ClientsCruzer = ClientsCruzer.Where(x => x.gender == "Г†ГҐГ­.").ToList();
                     break;
                 default: ClientsCruzer = ClientsCruzer.ToList(); break;
             }
@@ -94,7 +95,7 @@ namespace SchoolOfLanguages
                 }
                 else
                 {
-                    Console.WriteLine("Удаление клиентов с посещениями запрещено");
+                    Console.WriteLine("Г“Г¤Г Г«ГҐГ­ГЁГҐ ГЄГ«ГЁГҐГ­ГІГ®Гў Г± ГЇГ®Г±ГҐГ№ГҐГ­ГЁГїГ¬ГЁ Г§Г ГЇГ°ГҐГ№ГҐГ­Г®");
                 }
             }
         }
