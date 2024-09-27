@@ -1,0 +1,232 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1900" d:DesignHeight="980"
+		MaxWidth="1900" MaxHeight="980" MinWidth="1900" MinHeight="980"
+		WindowStartupLocation="CenterScreen"
+		x:CompileBindings="False"
+        x:Class="SchoolOfLanguages.MainWindow"
+        Title="SchoolOfLanguages">
+
+	<Grid RowDefinitions="*, 14*, *"
+		  ColumnDefinitions="*,*,*"
+		  ShowGridLines="False">
+
+		<TextBox Watermark="Поиск"
+				 Margin="10 0 300 10"
+				 VerticalAlignment="Bottom"
+		 		 Name="SearchTextBox"
+				 TextChanged="TextBox_TextChanged"/>
+		<DockPanel Grid.Column="0"
+				   HorizontalAlignment="Right"
+				   Margin="0 3 120 0">
+			<TextBlock Margin="0 23 10 0"
+					   Text="Д/Р в этом месяце"></TextBlock>
+			<CheckBox Name="galoschka"
+					  Margin="0 3 0 0"
+					  Checked="CheckBox_Checked"
+					  Unchecked="CheckBox_Unchecked"></CheckBox>
+		</DockPanel>
+		<DockPanel Grid.Column="3"
+				   Grid.Row="0"
+				   HorizontalAlignment="Right"
+				   VerticalAlignment="Bottom"
+				   Margin="0 0 10 10">
+
+			<TextBlock Text="Пол:"
+					   HorizontalAlignment="Center"
+					   FontWeight="Bold"
+					   Margin="10 8 0 0"/>
+			<ComboBox Name="ComboxOne"
+					  Margin="10 0 0 0"
+					  Width="90"
+					  SelectedIndex="0"
+					  SelectionChanged="ComboBox_SelectionChanged">
+				<ComboBoxItem>любой</ComboBoxItem>
+				<ComboBoxItem>Муж.</ComboBoxItem>
+				<ComboBoxItem>Жен.</ComboBoxItem>
+			</ComboBox>
+
+			<TextBlock Text="Сортировка:"
+					   HorizontalAlignment="Center"
+					   FontWeight="Bold"
+					   Margin="10 8 0 0"/>
+			<ComboBox Name="ComboxTwo"
+					  Margin="10 0 0 0"
+					  SelectedIndex="0"
+					  Width="200"
+					  SelectionChanged="SortCombobox_SelectionChanged">
+				<ComboBoxItem>Все</ComboBoxItem>
+				<ComboBoxItem>По фамилии</ComboBoxItem>
+				<ComboBoxItem>По дате последнего посещения</ComboBoxItem>
+				<ComboBoxItem>Пo количеству посещений</ComboBoxItem>
+			</ComboBox>
+		</DockPanel>
+		<DockPanel HorizontalAlignment="Right"
+				   VerticalAlignment="Top"
+				   Margin="0 0 0 15"
+				   Grid.Column="0"
+				   Grid.Row="2">
+			<TextBlock Text="Элементы:"
+					   HorizontalAlignment="Center"
+					   FontWeight="Bold"
+					   Margin="10 8 0 0"/>
+			<ComboBox Name="PageNavig"
+					  SelectedIndex="0"
+					  Margin="10 0 0 0"
+					  Width="70"
+					  SelectionChanged="PageNavig_Selection">
+				<ComboBoxItem>Все</ComboBoxItem>
+				<ComboBoxItem>10</ComboBoxItem>
+				<ComboBoxItem>50</ComboBoxItem>
+				<ComboBoxItem>200</ComboBoxItem>
+			</ComboBox>
+		</DockPanel>
+		<Button Content="Добавить нового клиента"
+				Margin="10 0 0 0"
+				Background="#04a0ff"
+				Grid.Column="0"
+				Grid.Row="3"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Top"
+				Click="New_Pokz_Button"></Button>
+		<Border BorderThickness="0.9"
+				Margin="10 0 10 10"
+				BorderBrush="Black"
+				Grid.Row="1"
+				Grid.ColumnSpan="3">
+			<DockPanel >
+				<TextBlock Margin="70 10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="Фото"/>
+				<TextBlock Margin="110 10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="ID"/>
+				<TextBlock Margin="30 10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="Пол" />
+				<TextBlock Margin="65 10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="Имя"/>
+				<TextBlock Margin="85 10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="Фамилия"/>
+				<TextBlock Margin="70  10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="Отчество"/>
+				<TextBlock Margin="70 10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="Дата рождения"></TextBlock>
+				<TextBlock Margin="125 10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="Почта"/>
+				<TextBlock Margin="110 10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="Телефон"/>
+				<TextBlock Margin="40 10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="Дата регистрации"/>
+				<TextBlock Margin="25 10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="Послед визит"/>
+				<TextBlock Margin="35 10 0 0"
+						   HorizontalAlignment="Center"
+						   Text="Колво визит"/>
+				<TextBlock Margin="0 10 120 0"
+						   HorizontalAlignment="Center"
+						   Text="Теги"/>
+			</DockPanel>
+		</Border>
+		<StackPanel Orientation="Horizontal"
+					Margin="15 0 10 0"
+					HorizontalAlignment="Right"
+					VerticalAlignment="Top"
+					Grid.Row="3"
+					Grid.Column="3">
+			<Button HorizontalAlignment="Left"
+					Background="#04a0ff"
+					Margin="0 0 5 0"
+					Content="Пред. стр."/>
+			<Button HorizontalAlignment="Right"
+					Background="#04a0ff"
+					Content="След. стр."/>
+			<TextBlock Text="{Binding PageList}"/>
+		</StackPanel>
+		<ListBox  MinWidth="1000"
+				  Grid.Row="1"
+				  Grid.ColumnSpan="3"
+				  Name="List_Box"
+				  Margin="10 40 10 10"
+				  BorderBrush="Black"
+				  BorderThickness="0.9"
+				  PointerReleased="Redact"
+				  ItemsSource="{Binding Clients}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Border BorderThickness="0 0 0 0.9"
+							BorderBrush="Black">
+						<Grid ColumnDefinitions="1.5*,30,70,*,*,*,1.5*,1.5*,*,*,*,*,*,*"
+							  ShowGridLines="True">
+							<Image Margin="2"
+								   Grid.Column="0"
+								   Source= "{Binding Picture}"/>
+							<TextBlock Margin="2"
+									   Grid.Column="1"
+									   HorizontalAlignment="Center" Text="{Binding Id}"/>
+							<TextBlock Margin="2"
+									   Grid.Column="2"
+									   HorizontalAlignment="Center"
+									   Text="{Binding gender}"/>
+							<TextBlock Margin="2"
+									   Grid.Column="3"
+									   Text="{Binding Name}"/>
+							<TextBlock Margin="2"
+									   Grid.Column="4"
+									   Text="{Binding LastName}"/>
+							<TextBlock Margin="2"
+									   Grid.Column="5"
+									   Text="{Binding Patronymic}"/>
+							<TextBlock Margin="2"
+									   Grid.Column="6"
+									   Text="{Binding DateOfBirth}"/>
+							<TextBlock Margin="2"
+									   Grid.Column="7"
+									   Text="{Binding Email}"
+									   FontSize="12"/>
+							<TextBlock Margin="2"
+									   Grid.Column="8"
+									   Text="{Binding Phone}"/>
+							<TextBlock Margin="2"
+									   Grid.Column="9"
+									   HorizontalAlignment="Right"
+									   Text="{Binding RegistrationDate}"/>
+							<TextBlock Margin="2"
+									   HorizontalAlignment="Right"
+									   Grid.Column="10"
+									   Text="{Binding Last_visit_date}"/>
+							<TextBlock Margin="2"
+									   Grid.Column="11"
+									   Text="{Binding Countvisit}"/>
+							<ListBox Grid.Column="12"
+									 ItemsSource="{Binding Tags}">
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<TextBlock Foreground="Black"
+												   Text="{Binding Name}"/>
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
+							<Button Grid.Column="13"
+									Click="DeliteServices_Click"
+									Content="Удалить"
+									HorizontalAlignment="Center"
+									VerticalAlignment="Center"
+									Tag="{Binding Id}"/>
+						</Grid>
+					</Border>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</Grid>
+</Window>

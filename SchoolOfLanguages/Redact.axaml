@@ -1,0 +1,71 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="650" d:DesignHeight="400"
+		MinHeight="400" MinWidth="650"
+		MaxHeight="400" MaxWidth="650"
+		WindowStartupLocation="CenterScreen"
+        x:Class="SchoolOfLanguages.Redact"
+		x:CompileBindings="False"
+        Title="Redact">
+	<Grid RowDefinitions="auto, auto " 
+		  ShowGridLines="True" 
+		  ColumnDefinitions="auto, auto" 
+		  Name="RedactModel"
+		  Background="Wheat">
+		
+		<StackPanel Margin="10" Spacing="10">
+			<TextBlock Grid.Row="1" 
+					   Grid.Column="0" 
+					   Text="Поля ввода" 
+					   FontSize="20" 
+					   HorizontalAlignment="Center"
+					   Name="block_panelheder" ></TextBlock>
+			<TextBox  Width="300" 
+					  HorizontalAlignment="Left"
+					  Watermark="Фамилия" 
+					  Text="{Binding Name}"></TextBox>
+			<TextBox  Width="300" 
+					  HorizontalAlignment="Left"
+					  Watermark="Имя" 
+					  Text="{Binding LastName}"></TextBox>
+			<TextBox  Width="300" 
+					  HorizontalAlignment="Left"
+					  Watermark="Отчество" 
+					  Text="{Binding Patronymic}"></TextBox>
+			<TextBox  Width="300" 
+					  HorizontalAlignment="Left" 
+					  Watermark="Email"  
+					  Text="{Binding Email}"></TextBox>
+			<TextBox  Width="300" 
+					  HorizontalAlignment="Left"
+					  Watermark="Телефон"  
+					  Text="{Binding Phone}"></TextBox>
+			<TextBox  Width="300" 
+					  HorizontalAlignment="Left" 
+					  Watermark="Дата рождения"  
+					  Text="{Binding #calendar.SelectedDate}"></TextBox>
+			<TextBox  Width="300" 
+					  HorizontalAlignment="Left"
+					  Watermark="Пол" 
+					  Text="{Binding gender}"></TextBox>
+		</StackPanel>
+
+		<DockPanel Grid.Row="1"
+				   Grid.Column="0"
+				   Margin="10">
+			<Button Click ="Save_Button"
+					Content="Сохранить"></Button>
+			<Button  Margin="5 0 0 0"
+					 Content="Отмена"
+					 Click="Back_Button"></Button>
+		</DockPanel>
+		<Calendar SelectedDate="" 
+				  Grid.Column="1" 
+				  Background="Aqua"
+				  Margin="10" 
+				  VerticalAlignment="Center"
+				  HorizontalAlignment="Center"/>
+	</Grid>
+</Window>
